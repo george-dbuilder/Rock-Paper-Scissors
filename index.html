@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title> Rock Paper Scissors</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+
+    function computerPlay() {
+      for (let i = Math.floor(Math.random() * 3) + 1; i <= 3; i++) {
+        return (i === 1) ? "ROCK" : (i === 2) ? "PAPER" : "SCISSORS";
+      }
+    }
+    let playerWin = 0;
+    let computerWin = 0;
+    let tie;
+    function playRound(playerEntry, computerEntry) {
+      playerEntry = prompt("Type ROCK, PAPER or SCISSORS").toUpperCase();
+      computerEntry = computerPlay();
+      if (playerEntry === "ROCK") {
+        if (computerEntry === "SCISSORS") {
+          playerWin++;
+          return "You win! Computer played scissors. ROCK crushes SCISSORS.";
+        }
+        else if (computerEntry === "PAPER") {
+          computerWin++;
+          return "You lose! Computer played paper. PAPER covers ROCK.";
+        }
+        else {
+          return "Tie. Play again!");
+        }
+      }
+
+      else if (playerEntry === "PAPER") {
+        if (computerEntry === "SCISSORS") {
+          computerWin++;
+          return "You lose! Computer played scissors. SCISSORS cuts PAPER.";
+        }
+        else if (computerEntry === "ROCK") {
+          playerWin++;
+          return "You win! Computer played rock. PAPER covers ROCK.";
+        }
+        else {
+          return "Tie. Play again!";
+        }
+      }
+
+      else {
+        if (computerEntry === "ROCK") {
+          computerWin++;
+          return "You lose! Computer played rock. ROCK crushes SCISSORS.";
+        }
+        else if (computerEntry === "PAPER") {
+          playerWin++;
+          return "You win! computer played paper. SCISSORS cuts PAPER.";
+        }
+        else {
+          return "Tie. Play again!";
+        }
+      }
+    }
+
+    function game() {
+      for (let i = 1; i <= 5; i++) {
+        console.log(playRound());
+      }
+      console.log("Your Score: " + playerWin);
+      console.log("Computer Score: " + computerWin);
+
+      if (playerWin === computerWin) {
+        return "Sorry. This is a tie.";
+      }
+      if (playerWin > computerWin) {
+        return "Boss, You won!";
+      }
+      else {
+        return "Idiot. You Lost!";
+      }
+    }
+    game();
+  </script>
+</body>
+
+</html>
